@@ -14,23 +14,25 @@ namespace CSingleton_Lab8
             string[] names = { "Alex", "Joan", "Jack", "Alice", "Matt" };
             string[] hometown = { "Detroit", "Chicago", "Philidalphia", "London", "Boston" };
             string[] favFood = { "Pizza", "Ice Cream", "Pad Thai", "Steak", "Pasta" };
-            string knowMore = "y";
 
-            Console.WriteLine("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-5)");
+            Console.WriteLine("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-5):");
             string nameIn = Console.ReadLine();
-            ValidateData(nameIn);
+            ValidateNum(nameIn);//checks to make sure the input is a single digit integer.
+
+            string knowMore = "y";
 
             while (knowMore == "y")
             {
                 string selection;
-                ValidateRange((int.Parse(nameIn)-1), names, knowMore);
 
-                try
+                ValidateIndexRange((int.Parse(nameIn)-1), names);//checks if input is whithin index range, throws exception if not.
+
+                try//validation on "would you like to know more question. 
                 {
                     selection = Console.ReadLine();
                     if (selection == "hometown")
                     {
-                        Console.WriteLine($"{names[(int.Parse(nameIn)) - 1]} is from {hometown[(int.Parse(nameIn)) - 1]}");
+                        Console.WriteLine($"{names[(int.Parse(nameIn)) - 1]} is from {hometown[(int.Parse(nameIn)) - 1]}.");
                         Console.WriteLine("Would you like to know more? (y/n)");
                         knowMore = Console.ReadLine();
                     }
@@ -42,7 +44,7 @@ namespace CSingleton_Lab8
                     }
                     else
                     {
-                        Console.WriteLine("This is not a valid selection. Please choose either \"hometown\" or \"favorite food\"");
+                        Console.WriteLine("This is not a valid selection. Please choose either \"hometown\" or \"favorite food\":");
                     }
                 }
                 catch (FormatException ex)
@@ -55,8 +57,7 @@ namespace CSingleton_Lab8
                 }
             }
         }
-
-        public static string ValidateData(string input)
+        public static string ValidateNum(string input)
         {
             while (!Regex.IsMatch(input, @"^\d{1}$"))
             {
@@ -65,8 +66,7 @@ namespace CSingleton_Lab8
             }
             return input;
         }
-
-        public static string ValidateRange(int input, string[] array1, string halt)
+        public static void ValidateIndexRange(int input, string[] array1)
         {
             try
             {
@@ -74,75 +74,8 @@ namespace CSingleton_Lab8
             }
             catch (IndexOutOfRangeException ex)
             {
-                halt = "n";
                 Console.WriteLine(ex);
             }
-            return halt;
         }
-        
-        //public static void ValidateFormat(string input, string[] array1, string[] array2)
-        //{
-        //    try
-        //    {
-
-        //    }
-        //    catch
-        //    {
-
-        //    }
-        //}
-
-        //    GetValidInput(@"^\d{1}$", "Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-5)",names);
-        //Console.WriteLine(names[int.Parse(nameinput)]);
-
-        //Console.WriteLine($"Student {nameinput}");             
-
-
-        //string result = GetInputResults(nameinput);
-
-        //Console.WriteLine($"Student {nameinput} is {names[]}. What would you like to know about {names[i]}? " +
-        //            $"Enter \"hometown\" or \"favorite food\".");
-
-
-        //public static string ValidateInput1(string pattern, string temp, string[] data)//string userMessage = "Please enter a valid input:", string errorMessage = "Error in input! Please try again.")
-        //{
-        //    //Console.WriteLine(userMessage);
-        //    string userInput = Console.ReadLine();
-
-
-        //    while (!Regex.IsMatch(userInput, pattern))
-        //    {
-        //        try
-        //        {
-        //            Console.WriteLine(userMessage);
-        //            userInput = Console.ReadLine();
-        //            Console.WriteLine(data[6]);
-
-        //            if (Regex.IsMatch(userInput, pattern))
-        //            {
-
-        //            }
-
-        //            //return userInput;
-
-        //        }
-        //        catch (IndexOutOfRangeException ex)
-        //        {
-        //            Console.WriteLine(ex);
-        //            continue;
-        //        }
-        //        catch (FormatException ex)
-        //        {
-        //            Console.WriteLine(ex);
-        //            continue;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex);
-        //            continue;
-        //        }
-        //    }
-        //    return userInput;
-        //}
     }
 }
