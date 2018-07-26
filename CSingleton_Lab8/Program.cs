@@ -15,17 +15,22 @@ namespace CSingleton_Lab8
             string[] hometown = { "Detroit", "Chicago", "Philidalphia", "London", "Boston" };
             string[] favFood = { "Pizza", "Ice Cream", "Pad Thai", "Steak", "Pasta" };
 
-            Console.WriteLine("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-5):");
-            string nameIn = Console.ReadLine();
-            ValidateNum(nameIn);//checks to make sure the input is a single digit integer.
-
+            string selection;
+            string nameIn = "";
+            bool check = true;
             string knowMore = "y";
+            while (check)
+            {
+                Console.WriteLine("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-5):");
+                nameIn = Console.ReadLine();
+                nameIn = ValidateNum(nameIn);//checks to make sure the input is a single digit integer.
+
+                check = ValidateIndexRange(nameIn, names);//checks if input is whithin index range, throws exception if not.
+            }
 
             while (knowMore == "y")
             {
-                string selection;
-
-                ValidateIndexRange((int.Parse(nameIn)-1), names);//checks if input is whithin index range, throws exception if not.
+                Console.WriteLine($"Student {int.Parse(nameIn)} is {names[int.Parse(nameIn) - 1]}. What would you like to know about {names[int.Parse(nameIn) - 1]}? (Enter \"hometown\" or \"favorite food\"):");
 
                 try//validation on "would you like to know more question. 
                 {
@@ -44,7 +49,8 @@ namespace CSingleton_Lab8
                     }
                     else
                     {
-                        Console.WriteLine("This is not a valid selection. Please choose either \"hometown\" or \"favorite food\":");
+                        continue;
+                        //Console.WriteLine("This is not a valid selection. Please choose either \"hometown\" or \"favorite food\":");
                     }
                 }
                 catch (FormatException ex)
@@ -66,16 +72,26 @@ namespace CSingleton_Lab8
             }
             return input;
         }
-        public static void ValidateIndexRange(int input, string[] array1)
+        public static bool ValidateIndexRange(string choice, string[] array1)
         {
+            int input = 0;
             try
             {
-                Console.WriteLine($"Student {input + 1} is {array1[input]}. What would you like to know about {array1[input]}? (Enter \"hometown\" or \"favorite food\"):");
+                input = int.Parse(choice);
+                string data = array1[input];
+                return false;
             }
             catch (IndexOutOfRangeException ex)
             {
                 Console.WriteLine(ex);
+                return true;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return true;
+            }
+
         }
     }
 }
