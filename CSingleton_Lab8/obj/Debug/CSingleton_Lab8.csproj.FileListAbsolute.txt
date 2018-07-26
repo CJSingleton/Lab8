@@ -1,0 +1,7 @@
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\bin\Debug\CSingleton_Lab8.exe.config
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\bin\Debug\CSingleton_Lab8.exe
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\bin\Debug\CSingleton_Lab8.pdb
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\obj\Debug\CSingleton_Lab8.csprojAssemblyReference.cache
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\obj\Debug\CSingleton_Lab8.csproj.CoreCompileInputs.cache
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\obj\Debug\CSingleton_Lab8.exe
+C:\Users\cjsin\GC_Labs\CSingleton_Lab8\CSingleton_Lab8\obj\Debug\CSingleton_Lab8.pdb
